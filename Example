@@ -1,0 +1,27 @@
+# HTML
+  <article class="half">
+  	<div class="videoverlay"><!-- present since videos absorb click events --></div>
+  	<video id="fun_video" class="interactive" loop="">
+  		<source src="http://video.funimation.com/homepage/website-loop-04.webm" type="video/webm" />
+  		<source src="http://video.funimation.com/homepage/website-loop-04.mp4" type="video/mp4" />
+  	</video>
+  </article>
+
+# Script
+  // Play paused video events on hover	
+  //---------------------------------------------------//
+  var videos = $(".half").hover( playvideo, stopvideo );
+  function playvideo(e) 	{ $(this).find('video').trigger("play"); }
+  function stopvideo(e) 	{ $(this).find('video').trigger("pause"); }
+  	
+  //continue to play video when mouse leaves window/area
+  $(document).mouseout(function() {
+    $('.half.active').find('video').trigger("play");
+  });
+  
+  //Open subordinate windows full screen
+  //---------------------------------------------------//	
+  $('.videoverlay').click(function(){
+    $(this).parents('article.half').toggleClass('active');
+		var videos = $(".active").find('video').trigger("play");
+	});	
