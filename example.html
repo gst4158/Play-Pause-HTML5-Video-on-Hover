@@ -1,7 +1,7 @@
 # HTML
   <article class="half">
   	<div class="videoverlay"><!-- present since videos absorb click events --></div>
-  	<video id="fun_video" class="interactive" loop="">
+  	<video loop="">
   		<source src="http://video.funimation.com/homepage/website-loop-04.webm" type="video/webm" />
   		<source src="http://video.funimation.com/homepage/website-loop-04.mp4" type="video/mp4" />
   	</video>
@@ -15,15 +15,40 @@
   function playvideo(e) 	{ $(this).find('video').trigger("play"); }
   function stopvideo(e) 	{ $(this).find('video').trigger("pause"); }
   	
-  //continue to play video when mouse leaves window/area
-  $(document).mouseout(function() {
-    $('.half.active').find('video').trigger("play");
-  });
+	//continue to play video when mouse leaves window/area
+	$(document).mouseout(function() {
+		$('.half.active').find('video').trigger("play");
+	});
   
-  //Open subordinate windows full screen
-  //---------------------------------------------------//	
-  $('.videoverlay').click(function(){
-    $(this).parents('article.half').toggleClass('active');
-		var videos = $(".active").find('video').trigger("play");
+	//Open subordinate windows full screen
+	//---------------------------------------------------//	
+	$('.videoverlay').click(function(){
+		$(this).parents('article.half').toggleClass('active');
+			var videos = $(".active").find('video').trigger("play");
 	});	
 </script>
+
+# CSS
+<style>
+.videoverlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: block;
+	transition: all 0.5s ease-in-out 0s;
+  width: 100%;
+  height: 100%;
+}
+
+.videoverlay:hover {
+  background-color: rgba(0, 0, 0, 0.01);
+  cursor: pointer;
+  width: 100%;
+}
+	
+</style>
+
+
