@@ -7,7 +7,8 @@
   	</video>
   </article>
 
-# Script
+<script>
+// Script
   // Play paused video events on hover	
   //---------------------------------------------------//
   var videos = $(".half").hover( playvideo, stopvideo );
@@ -25,3 +26,4 @@
     $(this).parents('article.half').toggleClass('active');
 		var videos = $(".active").find('video').trigger("play");
 	});	
+</script>
